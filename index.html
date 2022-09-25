@@ -1,0 +1,234 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <title>安儿</title>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/themes/vue.css" /> -->
+
+    <!-- 文件夹样式 -->
+    <link rel="stylesheet" href="static/css/sidebar-folder.min.css" />
+    <!-- 箭头样式 -->
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css" /> -->
+
+    <link rel="stylesheet" id="theme" href="static/theme/buble.css">
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" id="vue" title="vue" class="theme" disabled />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/dark.css" id="dark" title="dark" class="theme" disabled />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/buble.css" id="buble" title="buble" class="theme" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/pure.css" id="pure" title="pure" class="theme" disabled />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/dolphin.css" id="dolphin" title="dolphin" class="theme" disabled /> -->
+
+    <link rel="stylesheet" href="static/css/light.css">
+
+    <!-- <link rel=”stylesheet” type=”text/css” media=”screen and {max-width:767px}” href=”phone.css”>
+    <link rel=”stylesheet” type=”text/css” media=”screen and {min-width:767px}” href=”style.css”> -->
+
+    <style type="text/css">
+        html, body{font-size:110.0%;}
+        select{font-size:90.0%; text-align: center;}
+    </style>
+
+    <style>
+    .not-arrow{
+      /* padding: 5px 10px; */
+      border:0px solid #dcd8d8;
+      -webkit-appearance:none;
+      -moz-appearance:none;
+      appearance:none; /*去掉下拉箭头*/
+      background: transparent;
+    }
+
+/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+
+.not-arrow::-ms-expand { display: none; }
+    </style>
+
+    
+    <!-- <style>
+        a:link {color:blue;}      /* 未访问链接*/
+        a:visited {color:gray;}  /* 已访问链接 */
+        a:hover {color:red;}  /* 鼠标移动到链接上 */
+        a:active {color:black;}  /* 鼠标点击时 */
+    </style> -->
+
+    <!-- <style>
+        #font{
+            text-align: right;
+            font-size: 110.0%;
+        }
+    </style> -->
+      
+
+  </head>
+  <body>
+    <script type="text/javascript">
+        function setFont(size){
+          document.body.style.fontSize=size;
+          a_list = document.getElementsByTagName("a")
+
+          for(var i=0;i<a_list.length;i++){
+            a_list[i].style.fontSize=size;
+          }
+        }
+      </script>
+
+      <script type="text/javascript">
+        function change_theme(name){
+          themes = document.getElementsByClassName('theme');
+          var name_str = "static/theme/" + name + ".css";
+          document.getElementById('theme').href = name_str;
+        }
+      </script>
+
+      <script type="text/javascript">
+        window.onload = function () {
+            document.getElementById('theme_select').addEventListener('change',function(){
+                change_theme(this.value)
+                // alert("当前选项是:"+this.value);
+            },false);
+        }
+    </script>
+     
+      <nav>
+        <form action="">
+          <select id="theme_select" class="not-arrow">
+              <!-- <option value="主题切换" disabled>主题切换</option>  -->
+              <option value="theme">theme</option>
+              <option value="vue">vue</option>
+              <option value="dark">dark</option>
+              <option value="buble">buble</option>
+              <option value="pure">pure</option>
+              <option value="dolphin">dolphin</option>
+          </select>
+        </form>
+          <br>
+        <div id="font">
+          <a href="#" onclick="javascript:setFont('100%')">小</a>
+          <a href="#" onclick="javascript:setFont('110%')">中</a>
+          <a href="#" onclick="javascript:setFont('120%')">大</a>
+        </div>
+        
+
+
+      
+      
+
+      </nav>
+
+      
+
+    <div id="app"></div>
+
+
+    
+
+    <script>  
+      window.$docsify = {
+        name: "Aner",
+        // 侧边栏文档目录
+        loadSidebar: true,
+        loadNavbar: false,
+
+        subMaxLevel: 2,
+        alias: {
+          "/.*/_sidebar.md": "/_sidebar.md",
+          "/.*/_navbar.md": "/_navbar.md",
+        },
+        // 跳转后自动到顶部
+        auto2top: true,
+
+        coverpage: true,
+        homepage: 'README.md',
+        // 打开侧边栏
+        sidebarDisplayLevel: 3,
+
+
+        // PLUGINS
+        // ----------------------------------------------------------------
+        // 页面右侧toc
+        toc: {
+          tocMaxLevel: 2,
+          target: "h2, h3, h4, h5, h6",
+        },
+
+        // 全文搜索
+        search: {
+          depth: 6,
+          noData: "没有搜到!",
+          placeholder: "搜索...",
+          // 避免搜索索引冲突,同一域下的多个网站之间
+          namespace: "website-1",
+        },
+        // 底部导航
+        pagination: {
+          previousText: "上一页",
+          nextText: "下一页",
+          crossChapter: true,
+          crossChapterText: true,
+        },
+        // 字数统计
+        count: {
+          countable: true,
+          position: "top",
+          margin: "10px",
+          float: "right",
+          fontsize: "0.9em",
+          color: "red",
+          language: "chinese",
+          localization: {
+            words: "",
+            minute: "",
+          },
+          isExpected: true,
+        },
+      };
+    </script>
+    <!-- docsify -->
+    <script src="static/js/docsify.min.js"></script>  
+
+    <!-- 代码高亮  https://cdn.jsdelivr.net/npm/prismjs@1/components/ -->
+	
+    <script src="static/js/prism-bash.min.js"></script>	
+    <script src="static/js/prism-python.min.js"></script>
+    <script src="static/js/prism-cmake.min.js"></script>
+    <script src="static/js/prism-java.min.js"></script>
+    <script src="static/js/prism-csharp.min.js"></script>     
+    <script src="static/js/prism-docker.min.js"></script>  
+	<script src="static/js/prism-powershell.min.js"></script>  
+
+
+    <!-- 多tab支持 -->
+    <script src="static/js/docsify-tabs.min.js"></script>
+
+    <!-- 代码复制 -->
+    <script src="static/js/docsify-copy-code.min.js"></script>
+
+    <!-- 底部 上一页下一页 -->
+    <script src="static/js/docsify-pagination.min.js"></script>
+
+    <script src="static/js/external-script.min.js"></script>
+
+    <script src="static/js/ga.min.js"></script>
+
+    <!-- 全文搜索 -->
+    <script src="static/js/search.js"></script>
+
+    <!-- 图片放大缩小 -->
+    <script src="static/js/zoom-image.min.js"></script>
+
+    <!-- 字数统计 -->
+    <script src="static/js/countable.min.js"></script>
+
+    <!-- 侧边栏目录折叠 -->
+    <script src="static/js/docsify-sidebar-collapse.min.js"></script>
+
+    <!-- 页面右侧 TOC -->
+    <script src="static/js/docsify-plugin-toc.min.js"></script>
+
+      <!-- emoji -->
+      <script src="static/js/emoji.min.js"></script>
+  </body>
+</html>
